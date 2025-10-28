@@ -1,0 +1,43 @@
+<!-- <p>jobs works!</p>
+
+
+<div>
+    <div *ngFor="let job of jobs">
+        {{job | json}}
+    </div>
+</div> -->
+
+
+
+
+
+<div class="d-flex justify-content-center">
+    <h2>
+        Jobs
+    </h2>
+</div>
+
+<div>
+    <div *ngIf="isLoading; else jobDetails" class="d-flex justify-content-center">
+        <h2>Loading...</h2>
+    </div>
+
+    <div *ngIf="hasError" class="d-flex justify-content-center">
+        <h2>Something went wrong!!</h2>
+    </div>
+
+    <ng-template #jobDetails>
+        <div class="d-flex justify-content-center flex-wrap">
+            <div class="card m-2" style="width: 18rem;" *ngFor="let job of jobs">
+                <div class="card-body">
+                    <h5 class="card-title">{{job.title}}</h5>
+                    <p class="card-text">{{job.description}}</p>
+                    <p class="card-text">Openings: {{job.openings}}</p>
+                    <button class="btn btn-primary me-2"
+                        (click)="editJob(job.title, job.description, job.openings)">Edit</button>
+                    <button class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>
