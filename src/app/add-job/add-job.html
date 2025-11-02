@@ -1,1 +1,36 @@
-<p>add-job works!</p>
+<div>
+    <h2 style="text-align: center;">Add Job</h2>
+
+
+    <div *ngIf="isLoading; else addJobForm">
+        <h3>Loading...</h3>
+    </div>
+
+
+    <ng-template #addJobForm>
+        <form [formGroup]="jobform" (ngSubmit)="submit()">
+            <input type="text" formControlName="title" placeholder="Job Title" class="form-control mt-2" />
+            <small style="color: red;" *ngIf="jobform.get('title').invalid && jobform.get('title').touched">
+                Enter Valid title
+            </small>
+
+
+            <input type="text" formControlName="description" placeholder="Description" class="form-control mt-2" />
+            <small style="color: red;" *ngIf="jobform.get('description').invalid && jobform.get('description').touched">
+                Enter Valid description
+            </small>
+
+
+
+            <input type="number" formControlName="openings" placeholder="Openings" class="form-control mt-2" />
+            <small style="color: red;" *ngIf="jobform.get('openings').invalid && jobform.get('openings').touched">
+                Enter Valid openings
+            </small>
+
+
+            <button class="btn btn-primary mt-2">
+                Submit
+            </button>
+        </form>
+    </ng-template>
+</div>

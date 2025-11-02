@@ -35,7 +35,8 @@
                     <p class="card-text">Openings: {{job.openings}}</p>
                     <button class="btn btn-primary me-2"
                         (click)="editJob(job.title, job.description, job.openings)">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
+                    
+                    <button class="btn btn-danger" (click)="deleteJob(job.id)">Delete</button>
                 </div>
             </div>
         </div>

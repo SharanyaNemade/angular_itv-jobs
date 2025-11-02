@@ -63,7 +63,24 @@ export class Jobs {
         openings
       }
     })
-
-
   }
-}
+
+
+  deleteJob(jobId: string) {
+    this.isLoading = true;
+    this.jobService.deleteJob(jobId).subscribe({
+      next: () => {
+        this.jobs = this.jobs.filter((job: any) => {
+          job.id != jobId;
+        })
+        this.isLoading = false;
+      
+      },
+      error: () => {
+        alert("Something went wrong");
+        this.isLoading = false;
+      }
+    })
+  }
+
+    }
